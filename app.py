@@ -186,6 +186,36 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       margin-bottom: 0.75rem;
       display: block;
     }
+    .contact-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 1.4rem;
+    }
+    .contact-item {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .contact-item span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .contact-item a,
+    .contact-item strong {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .contact-item a:hover { color: var(--primary); text-decoration: underline; }
     .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
     .tag { background: #0f172a; border: 1px solid var(--border); padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.85rem; color: #e2e8f0; }
     .tag-highlight {
@@ -358,12 +388,28 @@ PORTFOLIO_SECTIONS = {
         <div class="panel-header">
           <div>
             <h2>Zeeshan Arif</h2>
-            <span style="color: var(--muted-soft); font-size: 0.95rem;">Jeddah, Saudi Arabia</span>
+            <span style="color: var(--muted-soft); font-size: 0.95rem;">Saudi Arabia, Jeddah</span>
           </div>
           <div class="status-pill"><span class="dot"></span> Verified Profile</div>
         </div>
         <div class="panel-body">
           <p>Experienced IT Infrastructure, Systems, and Network Engineer with 5+ years of hands-on expertise managing enterprise servers, Cisco network architecture, Windows Server hybrid environments, and business logistics applications.</p>
+
+          <div class="contact-strip">
+            <div class="contact-item">
+              <span>Current Location</span>
+              <strong>Saudi Arabia, Jeddah</strong>
+            </div>
+            <div class="contact-item">
+              <span>Phone / WhatsApp (KSA)</span>
+              <a href="https://wa.me/966578340352" target="_blank" rel="noopener">+966578340352</a>
+            </div>
+            <div class="contact-item">
+              <span>Email</span>
+              <a href="mailto:zeeshanarif1300@gmail.com">zeeshanarif1300@gmail.com</a>
+            </div>
+          </div>
+
           <div class="tags">
             <span class="tag">Cisco CCNA</span>
             <span class="tag">Windows Server Hybrid Admin</span>
@@ -441,11 +487,27 @@ PORTFOLIO_SECTIONS = {
           <div class="status-pill"><span class="dot"></span> Open to Connect</div>
         </div>
         <div class="panel-body">
-          <p>Currently serving full-time as an <strong>Application &amp; Systems Support Engineer / IT &amp; Network Engineer</strong> at Mosanada Logistics Services (Jeddah, Saudi Arabia), while actively open to IT Managerial/Lead roles in Saudi Arabia as well as part-time remote international opportunities.</p>
+          <p>Currently serving full-time as an <strong>Application &amp; Systems Support Engineer / IT &amp; Network Engineer</strong> at Mosanada Logistics Services (Saudi Arabia, Jeddah), while actively open to IT Managerial/Lead roles in Saudi Arabia as well as part-time remote international opportunities.</p>
+
+          <div class="contact-strip">
+            <div class="contact-item">
+              <span>Current Location</span>
+              <strong>Saudi Arabia, Jeddah</strong>
+            </div>
+            <div class="contact-item">
+              <span>Phone / WhatsApp (KSA)</span>
+              <a href="https://wa.me/966578340352" target="_blank" rel="noopener">+966578340352</a>
+            </div>
+            <div class="contact-item">
+              <span>Email</span>
+              <a href="mailto:zeeshanarif1300@gmail.com">zeeshanarif1300@gmail.com</a>
+            </div>
+          </div>
+
           <div class="list-grid">
             <div class="info-box">
               <h4>Primary Role &amp; Career Focus</h4>
-              <p>Full-Time On-Site IT Infrastructure &amp; Enterprise Systems Support in Jeddah, KSA &mdash; open to IT Manager, Infrastructure Lead, and Senior Systems Engineer roles.</p>
+              <p>Full-Time On-Site IT Infrastructure &amp; Enterprise Systems Support in Saudi Arabia, Jeddah &mdash; open to IT Manager, Infrastructure Lead, and Senior Systems Engineer roles.</p>
             </div>
             <div class="info-box">
               <h4>Remote Availability</h4>
@@ -454,7 +516,8 @@ PORTFOLIO_SECTIONS = {
           </div>
           <div class="btn-group">
             <button type="button" onclick="openResume()" class="btn btn-primary">View Resume</button>
-            <a href="https://www.linkedin.com/in/zeeshan-arif-001058250" target="_blank" rel="noopener" class="btn btn-outline">Message on LinkedIn</a>
+            <a href="https://wa.me/966578340352" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp (+966578340352)</a>
+            <a href="mailto:zeeshanarif1300@gmail.com" class="btn btn-outline">Send Email</a>
           </div>
         </div>
     """,
@@ -480,47 +543,4 @@ PORTFOLIO_SECTIONS = {
             </div>
             <div class="info-box">
               <h4>Cybersecurity, Access &amp; Physical Tech</h4>
-              <p>FortiGate next-gen firewalls, VPNs, PAM/security appliances, endpoint hardening, CCTV/NVR/DVR surveillance, biometric/access control systems, industrial/document scanners, and enterprise MFPs.</p>
-            </div>
-            <div class="info-box">
-              <h4>Enterprise &amp; Logistics Applications</h4>
-              <p>Oracle E-Business Suite (PR/PO workflows), document management platforms, operational scanning &amp; inspection systems, ticketing/CRM workflows, and multi-site operational rollouts &amp; user enablement.</p>
-            </div>
-            <div class="info-box">
-              <h4>Data Analytics, Scripting &amp; Automation</h4>
-              <p>SQL &amp; SQL Server querying/data warehousing, Power BI reporting, Power Automate workflows, Excel analytics, Python scripting, Jupyter/VS Code workflows, and Git version control.</p>
-            </div>
-            <div class="info-box">
-              <h4>Modern IT, AI Productivity &amp; HSE</h4>
-              <p>AI-assisted troubleshooting, documentation &amp; workflow acceleration, root-cause incident/problem management, vendor &amp; stakeholder coordination, and NEBOSH / IOSH workplace safety governance.</p>
-            </div>
-          </div>
-
-          <div class="tags">
-            <span class="tag">CCNA</span>
-            <span class="tag">Windows Server Hybrid</span>
-            <span class="tag">Entra ID &amp; AD/GPO</span>
-            <span class="tag">Cisco &amp; FortiGate</span>
-            <span class="tag">VMware &amp; Hyper-V</span>
-            <span class="tag">Oracle EBS</span>
-            <span class="tag">SQL &amp; Power BI</span>
-            <span class="tag">Power Automate</span>
-            <span class="tag">Python &amp; Git</span>
-            <span class="tag">AI-Assisted IT Ops</span>
-            <span class="tag">NEBOSH &amp; IOSH</span>
-          </div>
-
-          <div class="btn-group">
-            <button type="button" onclick="openResume()" class="btn btn-primary">View Full Resume</button>
-            <a href="https://github.com/Zeeshan-Arif-Networks" target="_blank" rel="noopener" class="btn btn-outline">Explore GitHub</a>
-          </div>
-        </div>
-    """
-}
-
-@app.route("/")
-def home():
-    return render_template_string(HTML_TEMPLATE, sections=PORTFOLIO_SECTIONS)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+              <p>FortiGate
