@@ -41,7 +41,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       top: 0;
       left: 0;
       width: 100%;
-      height: 465px;
+      height: 490px;
       background-image:
         linear-gradient(
           to bottom,
@@ -109,11 +109,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       text-shadow: 0 1px 12px rgba(255, 255, 255, 0.85);
     }
     header .subtitle {
-      color: #1e293b;
+      color: #0f172a;
       font-weight: 600;
-      margin-top: 0.5rem;
-      font-size: 1.05rem;
-      text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
+      margin: 0.65rem auto 0 auto;
+      max-width: 780px;
+      line-height: 1.55;
+      font-size: 1.02rem;
+      background: rgba(255, 255, 255, 0.72);
+      padding: 0.65rem 1.15rem;
+      border-radius: 14px;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      backdrop-filter: blur(4px);
     }
 
     /* Prominent Header Resume Button */
@@ -291,7 +297,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       </div>
       <div class="badge">Interactive Portfolio</div>
       <h1>Zeeshan Arif</h1>
-      <p class="subtitle">Select an option below to explore profile, eligible designations, work status, and technical expertise.</p>
+      <p class="subtitle">
+        IT Infrastructure, Systems &amp; Network Engineer (5+ Years) | CCNA &amp; Windows Server Hybrid Certified | Driving enterprise networking, hybrid cloud &amp; AD, Oracle EBS &amp; logistics systems, SQL/Power BI analytics, and workflow automation.
+      </p>
       <div class="header-actions">
         <button type="button" class="btn-resume-hero" onclick="openResume()">
           &#128196; View Resume
@@ -543,4 +551,47 @@ PORTFOLIO_SECTIONS = {
             </div>
             <div class="info-box">
               <h4>Cybersecurity, Access &amp; Physical Tech</h4>
-              <p>FortiGate
+              <p>FortiGate next-gen firewalls, VPNs, PAM/security appliances, endpoint hardening, CCTV/NVR/DVR surveillance, biometric/access control systems, industrial/document scanners, and enterprise MFPs.</p>
+            </div>
+            <div class="info-box">
+              <h4>Enterprise &amp; Logistics Applications</h4>
+              <p>Oracle E-Business Suite (PR/PO workflows), document management platforms, operational scanning &amp; inspection systems, ticketing/CRM workflows, and multi-site operational rollouts &amp; user enablement.</p>
+            </div>
+            <div class="info-box">
+              <h4>Data Analytics, Scripting &amp; Automation</h4>
+              <p>SQL &amp; SQL Server querying/data warehousing, Power BI reporting, Power Automate workflows, Excel analytics, Python scripting, Jupyter/VS Code workflows, and Git version control.</p>
+            </div>
+            <div class="info-box">
+              <h4>Modern IT, AI Productivity &amp; HSE</h4>
+              <p>AI-assisted troubleshooting, documentation &amp; workflow acceleration, root-cause incident/problem management, vendor &amp; stakeholder coordination, and NEBOSH / IOSH workplace safety governance.</p>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">CCNA</span>
+            <span class="tag">Windows Server Hybrid</span>
+            <span class="tag">Entra ID &amp; AD/GPO</span>
+            <span class="tag">Cisco &amp; FortiGate</span>
+            <span class="tag">VMware &amp; Hyper-V</span>
+            <span class="tag">Oracle EBS</span>
+            <span class="tag">SQL &amp; Power BI</span>
+            <span class="tag">Power Automate</span>
+            <span class="tag">Python &amp; Git</span>
+            <span class="tag">AI-Assisted IT Ops</span>
+            <span class="tag">NEBOSH &amp; IOSH</span>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" onclick="openResume()" class="btn btn-primary">View Full Resume</button>
+            <a href="https://github.com/Zeeshan-Arif-Networks" target="_blank" rel="noopener" class="btn btn-outline">Explore GitHub</a>
+          </div>
+        </div>
+    """
+}
+
+@app.route("/")
+def home():
+    return render_template_string(HTML_TEMPLATE, sections=PORTFOLIO_SECTIONS)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
