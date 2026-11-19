@@ -507,3 +507,8 @@ return render_template_string(HTML_TEMPLATE, sections=PORTFOLIO_SECTIONS)
 if __name__ == "__main__":
 
 app.run(host="0.0.0.0", port=5000) 
+/* Current (broken CSS selector): */
+- { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Change to: */
+* { box-sizing: border-box; margin: 0; padding: 0; }
