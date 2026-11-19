@@ -92,7 +92,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       display: block;
     }
 
-    /* High-contrast dark-on-light hero text */
+    /* High-contrast dark-on-light hero text directly over the banner */
     .badge {
       display: inline-block; padding: 0.35rem 0.95rem; font-size: 0.8rem;
       font-weight: 700;
@@ -115,11 +115,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       max-width: 780px;
       line-height: 1.55;
       font-size: 1.02rem;
-      background: rgba(255, 255, 255, 0.72);
-      padding: 0.65rem 1.15rem;
-      border-radius: 14px;
-      border: 1px solid rgba(15, 23, 42, 0.1);
-      backdrop-filter: blur(4px);
+      text-shadow: 0 1px 10px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 0.85);
     }
 
     /* Prominent Header Resume Button */
@@ -574,24 +570,4 @@ PORTFOLIO_SECTIONS = {
             <span class="tag">Cisco &amp; FortiGate</span>
             <span class="tag">VMware &amp; Hyper-V</span>
             <span class="tag">Oracle EBS</span>
-            <span class="tag">SQL &amp; Power BI</span>
-            <span class="tag">Power Automate</span>
-            <span class="tag">Python &amp; Git</span>
-            <span class="tag">AI-Assisted IT Ops</span>
-            <span class="tag">NEBOSH &amp; IOSH</span>
-          </div>
-
-          <div class="btn-group">
-            <button type="button" onclick="openResume()" class="btn btn-primary">View Full Resume</button>
-            <a href="https://github.com/Zeeshan-Arif-Networks" target="_blank" rel="noopener" class="btn btn-outline">Explore GitHub</a>
-          </div>
-        </div>
-    """
-}
-
-@app.route("/")
-def home():
-    return render_template_string(HTML_TEMPLATE, sections=PORTFOLIO_SECTIONS)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+            <span class
