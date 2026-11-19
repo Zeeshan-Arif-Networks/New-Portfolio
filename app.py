@@ -18,22 +18,57 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       --primary-glow: rgba(56, 189, 248, 0.35);
       --accent: #10b981;
       --text: #f8fafc;
-      --muted: #94a3b8;
+      --muted: #cbd5e1;
+      --muted-soft: #94a3b8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at top right, #1e293b, #0f172a 70%);
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2.5rem 1rem;
+      padding-bottom: 2.5rem;
+      position: relative;
+      overflow-x: hidden;
     }
-    .container { width: 100%; max-width: 1040px; }
-    header { text-align: center; margin-bottom: 2.5rem; }
+
+    /* Upper-half background banner behind hero section */
+    .hero-banner-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 460px;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(15, 23, 42, 0.58) 0%,
+          rgba(15, 23, 42, 0.72) 55%,
+          rgba(15, 23, 42, 1) 100%
+        ),
+        url("{{ url_for('static', filename='hero-bg.jpg') }}");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      padding: 2.5rem 1rem 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-top: 0.5rem;
+    }
 
     /* Profile Image Styling */
     .profile-img-container {
@@ -43,7 +78,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       border-radius: 50%;
       padding: 4px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: 0 0 25px var(--primary-glow);
+      box-shadow: 0 0 28px rgba(15, 23, 42, 0.8), 0 0 25px var(--primary-glow);
     }
     .profile-img {
       width: 100%;
@@ -56,11 +91,22 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .badge {
       display: inline-block; padding: 0.35rem 0.9rem; font-size: 0.8rem;
       letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary);
-      background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.4);
       border-radius: 999px; margin-bottom: 0.9rem;
+      backdrop-filter: blur(4px);
     }
-    h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; }
-    .subtitle { color: var(--muted); margin-top: 0.5rem; font-size: 1.05rem; }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+    }
+    .subtitle {
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-size: 1.05rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    }
 
     /* Prominent Header Resume Button */
     .header-actions {
@@ -104,7 +150,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .option-card.active { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); background: #1e324a; }
     .card-index { font-size: 0.75rem; font-weight: 700; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
     .card-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.45rem; }
-    .card-preview { color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+    .card-preview { color: var(--muted-soft); font-size: 0.9rem; line-height: 1.45; }
     .card-action { margin-top: 1.2rem; font-size: 0.85rem; font-weight: 600; color: var(--primary); display: inline-flex; align-items: center; gap: 0.35rem; }
     .detail-panel {
       background: var(--surface); border: 1px solid var(--border);
@@ -128,7 +174,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
     .info-box { background: #0f172a; border: 1px solid var(--border); border-radius: 12px; padding: 1.15rem; }
     .info-box h4 { color: var(--primary); font-size: 0.95rem; margin-bottom: 0.5rem; }
-    .info-box p { margin: 0; font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
+    .info-box p { margin: 0; font-size: 0.9rem; color: var(--muted-soft); line-height: 1.55; }
     .btn-group { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
     .btn { padding: 0.65rem 1.25rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 0.4rem; }
     .btn-primary { background: var(--primary); color: #0f172a; }
@@ -179,10 +225,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       background: #0f172a;
     }
 
-    footer { margin-top: 2.5rem; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    footer { margin-top: 2.5rem; text-align: center; color: var(--muted-soft); font-size: 0.85rem; }
   </style>
 </head>
 <body>
+  <div class="hero-banner-bg" aria-hidden="true"></div>
+
   <div class="container">
     <header>
       <div class="profile-img-container">
@@ -287,7 +335,7 @@ PORTFOLIO_SECTIONS = {
         <div class="panel-header">
           <div>
             <h2>Zeeshan Arif</h2>
-            <span style="color: var(--muted); font-size: 0.95rem;">Jeddah, Saudi Arabia</span>
+            <span style="color: var(--muted-soft); font-size: 0.95rem;">Jeddah, Saudi Arabia</span>
           </div>
           <div class="status-pill"><span class="dot"></span> Verified Profile</div>
         </div>
@@ -312,7 +360,7 @@ PORTFOLIO_SECTIONS = {
         <div class="panel-header">
           <div>
             <h2>Designation &amp; Core Responsibilities</h2>
-            <span style="color: var(--muted); font-size: 0.95rem;">Application &amp; Systems Support Engineer | IT &amp; Network Engineer</span>
+            <span style="color: var(--muted-soft); font-size: 0.95rem;">Application &amp; Systems Support Engineer | IT &amp; Network Engineer</span>
           </div>
         </div>
         <div class="panel-body">
@@ -341,7 +389,7 @@ PORTFOLIO_SECTIONS = {
         <div class="panel-header">
           <div>
             <h2>Current Work Status</h2>
-            <span style="color: var(--muted); font-size: 0.95rem;">Active Full-Time &amp; Open to Remote Opportunities</span>
+            <span style="color: var(--muted-soft); font-size: 0.95rem;">Active Full-Time &amp; Open to Remote Opportunities</span>
           </div>
           <div class="status-pill"><span class="dot"></span> Open to Connect</div>
         </div>
@@ -367,7 +415,7 @@ PORTFOLIO_SECTIONS = {
         <div class="panel-header">
           <div>
             <h2>Technical Expertise &amp; Modern IT Stack</h2>
-            <span style="color: var(--muted); font-size: 0.95rem;">Enterprise Infrastructure, Hybrid Cloud, Automation, Data &amp; Operational Discipline</span>
+            <span style="color: var(--muted-soft); font-size: 0.95rem;">Enterprise Infrastructure, Hybrid Cloud, Automation, Data &amp; Operational Discipline</span>
           </div>
           <div class="status-pill"><span class="dot"></span> Multi-Domain IT</div>
         </div>
