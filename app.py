@@ -177,8 +177,23 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981; }
     .panel-body p { color: #cbd5e1; line-height: 1.65; margin-bottom: 1.25rem; }
+    .section-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
     .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
     .tag { background: #0f172a; border: 1px solid var(--border); padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.85rem; color: #e2e8f0; }
+    .tag-highlight {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #f8fafc;
+      font-weight: 600;
+    }
     .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
     .info-box { background: #0f172a; border: 1px solid var(--border); border-radius: 12px; padding: 1.15rem; }
     .info-box h4 { color: var(--primary); font-size: 0.95rem; margin-bottom: 0.5rem; }
@@ -246,7 +261,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       </div>
       <div class="badge">Interactive Portfolio</div>
       <h1>Zeeshan Arif</h1>
-      <p class="subtitle">Select an option below to explore profile, designation, work status, and technical expertise.</p>
+      <p class="subtitle">Select an option below to explore profile, eligible designations, work status, and technical expertise.</p>
       <div class="header-actions">
         <button type="button" class="btn-resume-hero" onclick="openResume()">
           &#128196; View Resume
@@ -267,10 +282,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <button class="option-card" onclick="selectTab('designation', this)">
         <div>
           <div class="card-index">Option 02</div>
-          <div class="card-title">Designation</div>
-          <p class="card-preview">Application &amp; Systems Support Engineer | IT &amp; Network Engineer.</p>
+          <div class="card-title">Designations &amp; Roles</div>
+          <p class="card-preview">Current role &amp; all IT leadership, systems, network, and data roles eligible to apply.</p>
         </div>
-        <span class="card-action">View Role Details &rarr;</span>
+        <span class="card-action">View Eligible Roles &rarr;</span>
       </button>
 
       <button class="option-card" onclick="selectTab('status', this)">
@@ -367,29 +382,53 @@ PORTFOLIO_SECTIONS = {
     "designation": """
         <div class="panel-header">
           <div>
-            <h2>Designation &amp; Core Responsibilities</h2>
-            <span style="color: var(--muted-soft); font-size: 0.95rem;">Application &amp; Systems Support Engineer | IT &amp; Network Engineer</span>
+            <h2>Designations &amp; Core Responsibilities</h2>
+            <span style="color: var(--muted-soft); font-size: 0.95rem;">
+              IT Infrastructure &amp; Operations Lead | Application &amp; Systems Support Engineer | IT &amp; Network Engineer | Systems Administrator
+            </span>
           </div>
+          <div class="status-pill"><span class="dot"></span> 5+ Years Experience</div>
         </div>
         <div class="panel-body">
-          <p>Delivering end-to-end IT operations, infrastructure deployment, and enterprise application support across corporate offices and multi-site logistics facilities.</p>
+          <p>Backed by 5+ years of hands-on enterprise experience, Microsoft Windows Server Hybrid &amp; Cisco CCNA credentials, and multi-site project execution, I am eligible and ready for the following leadership, engineering, and analytical roles:</p>
+
+          <span class="section-label">Eligible Job Designations &amp; Target Roles</span>
+          <div class="tags">
+            <span class="tag tag-highlight">IT Manager / Assistant IT Manager</span>
+            <span class="tag tag-highlight">IT Infrastructure Lead / Supervisor</span>
+            <span class="tag tag-highlight">IT Operations Engineer</span>
+            <span class="tag tag-highlight">Systems &amp; Network Engineer</span>
+            <span class="tag tag-highlight">Windows Server / Hybrid Cloud Administrator</span>
+            <span class="tag tag-highlight">Application Support Specialist (ERP / Logistics)</span>
+            <span class="tag tag-highlight">Senior Technical Support / Service Desk Lead</span>
+            <span class="tag tag-highlight">IT Systems &amp; Data Analyst (SQL / Power BI)</span>
+            <span class="tag tag-highlight">Broadcast &amp; IP Network Operations Engineer</span>
+            <span class="tag tag-highlight">IT &amp; Site Safety Coordinator (NEBOSH / IOSH)</span>
+          </div>
+
+          <span class="section-label">Core Functional Responsibilities</span>
           <div class="list-grid">
             <div class="info-box">
-              <h4>Network &amp; Security</h4>
-              <p>Cisco Catalyst switches, routers, FortiGate firewalls, Wi-Fi APs, IP telephony, and CCTV/biometric access systems.</p>
+              <h4>IT Leadership &amp; Operations Management</h4>
+              <p>Multi-site IT infrastructure planning, vendor &amp; procurement coordination (PR/PO), SLA/incident resolution, asset lifecycle governance, and cross-departmental team enablement.</p>
             </div>
             <div class="info-box">
-              <h4>Systems &amp; Cloud</h4>
-              <p>Windows Server, Active Directory, Azure Entra ID, VMware/Hyper-V virtualization, and Endpoint Central management.</p>
+              <h4>Network &amp; Security Engineering</h4>
+              <p>Cisco Catalyst switches, routers, FortiGate firewalls, Wi-Fi APs, IP telephony, structured cabling rollouts, and CCTV/biometric access systems.</p>
             </div>
             <div class="info-box">
-              <h4>Enterprise Applications</h4>
-              <p>Oracle EBS, document management servers, automated scanning systems, and SQL database administration.</p>
+              <h4>Systems &amp; Hybrid Cloud Administration</h4>
+              <p>Windows Server Hybrid environments, Active Directory, Group Policy, Azure Entra ID, VMware/Hyper-V virtualization, and Endpoint Central management.</p>
             </div>
             <div class="info-box">
-              <h4>Data &amp; Automation</h4>
-              <p>Building reporting dashboards and workflow automations using Power BI, SQL, Power Automate, and Python.</p>
+              <h4>Enterprise Applications &amp; Data Analytics</h4>
+              <p>Oracle EBS, document management servers, automated vehicle/document scanning systems, SQL Server administration, Power BI dashboards, and Python/Power Automate workflows.</p>
             </div>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" onclick="openResume()" class="btn btn-primary">View Full Resume</button>
+            <a href="https://www.linkedin.com/in/zeeshan-arif-001058250" target="_blank" rel="noopener" class="btn btn-outline">Connect on LinkedIn</a>
           </div>
         </div>
     """,
@@ -397,20 +436,20 @@ PORTFOLIO_SECTIONS = {
         <div class="panel-header">
           <div>
             <h2>Current Work Status</h2>
-            <span style="color: var(--muted-soft); font-size: 0.95rem;">Active Full-Time &amp; Open to Remote Opportunities</span>
+            <span style="color: var(--muted-soft); font-size: 0.95rem;">Active Full-Time &amp; Open to Managerial &amp; Remote Opportunities</span>
           </div>
           <div class="status-pill"><span class="dot"></span> Open to Connect</div>
         </div>
         <div class="panel-body">
-          <p>Currently serving full-time as an <strong>Application &amp; Systems Support Engineer / IT &amp; Network Engineer</strong> at Mosanada Logistics Services (Jeddah, Saudi Arabia).</p>
+          <p>Currently serving full-time as an <strong>Application &amp; Systems Support Engineer / IT &amp; Network Engineer</strong> at Mosanada Logistics Services (Jeddah, Saudi Arabia), while actively open to IT Managerial/Lead roles in Saudi Arabia as well as part-time remote international opportunities.</p>
           <div class="list-grid">
             <div class="info-box">
-              <h4>Primary Role</h4>
-              <p>Full-Time On-Site IT Infrastructure &amp; Enterprise Systems Support (Jeddah, KSA).</p>
+              <h4>Primary Role &amp; Career Focus</h4>
+              <p>Full-Time On-Site IT Infrastructure &amp; Enterprise Systems Support in Jeddah, KSA &mdash; open to IT Manager, Infrastructure Lead, and Senior Systems Engineer roles.</p>
             </div>
             <div class="info-box">
               <h4>Remote Availability</h4>
-              <p>Available for part-time remote IT support, systems administration, and data analytics projects.</p>
+              <p>Available for part-time remote IT support, Windows/cloud systems administration, and SQL/Power BI data analytics projects.</p>
             </div>
           </div>
           <div class="btn-group">
