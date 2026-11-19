@@ -35,24 +35,28 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       overflow-x: hidden;
     }
 
-    /* Upper-half background banner behind hero section */
+    /* Light & bright upper-half background banner */
     .hero-banner-bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 460px;
+      height: 465px;
       background-image:
         linear-gradient(
           to bottom,
-          rgba(15, 23, 42, 0.58) 0%,
-          rgba(15, 23, 42, 0.72) 55%,
+          rgba(255, 255, 255, 0.42) 0%,
+          rgba(241, 245, 249, 0.58) 68%,
+          rgba(15, 23, 42, 0.92) 92%,
           rgba(15, 23, 42, 1) 100%
         ),
         url("{{ url_for('static', filename='hero-bg.jpg') }}");
       background-size: cover;
-      background-position: center top;
+      background-position: center center;
       background-repeat: no-repeat;
+      transform: scale(1.12);
+      transform-origin: center center;
+      filter: brightness(1.15) contrast(1.05);
       z-index: 0;
       pointer-events: none;
     }
@@ -77,8 +81,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       margin: 0 auto 1.25rem auto;
       border-radius: 50%;
       padding: 4px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: 0 0 28px rgba(15, 23, 42, 0.8), 0 0 25px var(--primary-glow);
+      background: linear-gradient(135deg, #0284c7, var(--accent));
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.35);
     }
     .profile-img {
       width: 100%;
@@ -88,24 +92,28 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       display: block;
     }
 
+    /* High-contrast dark-on-light hero text */
     .badge {
-      display: inline-block; padding: 0.35rem 0.9rem; font-size: 0.8rem;
-      letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary);
-      background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.4);
-      border-radius: 999px; margin-bottom: 0.9rem;
-      backdrop-filter: blur(4px);
-    }
-    h1 {
-      font-size: 2.5rem;
+      display: inline-block; padding: 0.35rem 0.95rem; font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+      letter-spacing: 0.08em; text-transform: uppercase; color: #0369a1;
+      background: rgba(255, 255, 255, 0.88); border: 1px solid rgba(2, 132, 199, 0.35);
+      border-radius: 999px; margin-bottom: 0.85rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
     }
-    .subtitle {
-      color: var(--muted);
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      text-shadow: 0 1px 12px rgba(255, 255, 255, 0.85);
+    }
+    header .subtitle {
+      color: #1e293b;
+      font-weight: 600;
       margin-top: 0.5rem;
       font-size: 1.05rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
     }
 
     /* Prominent Header Resume Button */
@@ -120,20 +128,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      padding: 0.75rem 1.5rem;
+      padding: 0.78rem 1.6rem;
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.95rem;
-      color: #0f172a;
-      background: linear-gradient(135deg, var(--primary), #7dd3fc);
-      border: none;
+      color: #ffffff;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      border: 1px solid rgba(255, 255, 255, 0.45);
       cursor: pointer;
-      box-shadow: 0 8px 24px var(--primary-glow);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.35);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .btn-resume-hero:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.5);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.45);
     }
 
     .options-grid {
