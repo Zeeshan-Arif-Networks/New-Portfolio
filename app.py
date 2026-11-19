@@ -512,3 +512,6 @@ app.run(host="0.0.0.0", port=5000)
 
 /* Change to: */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+@app.route("/")
+def home():
+    return render_template_string(HTML_TEMPLATE, sections=PORTFOLIO_SECTIONS)
