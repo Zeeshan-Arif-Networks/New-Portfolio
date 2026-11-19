@@ -32,7 +32,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       justify-content: center;
       padding: 2.5rem 1rem;
     }
-    .container { width: 100%; max-width: 960px; }
+    .container { width: 100%; max-width: 1040px; }
     header { text-align: center; margin-bottom: 2.5rem; }
 
     /* Profile Image Styling */
@@ -91,20 +91,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }
 
     .options-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.25rem; margin-bottom: 2rem;
     }
     .option-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 1.6rem; text-align: left; color: inherit;
+      border-radius: 16px; padding: 1.5rem; text-align: left; color: inherit;
       cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
       display: flex; flex-direction: column; justify-content: space-between;
     }
     .option-card:hover { transform: translateY(-4px); background: var(--surface-hover); border-color: var(--primary); }
     .option-card.active { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); background: #1e324a; }
     .card-index { font-size: 0.75rem; font-weight: 700; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
-    .card-title { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.45rem; }
-    .card-preview { color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
+    .card-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.45rem; }
+    .card-preview { color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
     .card-action { margin-top: 1.2rem; font-size: 0.85rem; font-weight: 600; color: var(--primary); display: inline-flex; align-items: center; gap: 0.35rem; }
     .detail-panel {
       background: var(--surface); border: 1px solid var(--border);
@@ -125,10 +125,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .panel-body p { color: #cbd5e1; line-height: 1.65; margin-bottom: 1.25rem; }
     .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
     .tag { background: #0f172a; border: 1px solid var(--border); padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.85rem; color: #e2e8f0; }
-    .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
-    .info-box { background: #0f172a; border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem; }
-    .info-box h4 { color: var(--primary); font-size: 0.9rem; margin-bottom: 0.4rem; }
-    .info-box p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+    .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .info-box { background: #0f172a; border: 1px solid var(--border); border-radius: 12px; padding: 1.15rem; }
+    .info-box h4 { color: var(--primary); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .info-box p { margin: 0; font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
     .btn-group { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
     .btn { padding: 0.65rem 1.25rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 0.4rem; }
     .btn-primary { background: var(--primary); color: #0f172a; }
@@ -190,7 +190,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       </div>
       <div class="badge">Interactive Portfolio</div>
       <h1>Zeeshan Arif</h1>
-      <p class="subtitle">Select an option below to explore profile, designation, and current work status.</p>
+      <p class="subtitle">Select an option below to explore profile, designation, work status, and technical expertise.</p>
       <div class="header-actions">
         <button type="button" class="btn-resume-hero" onclick="openResume()">
           &#128196; View Resume
@@ -203,7 +203,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div>
           <div class="card-index">Option 01</div>
           <div class="card-title">Zeeshan Arif</div>
-          <p class="card-preview">Personal profile, location, technical skills, and professional links.</p>
+          <p class="card-preview">Personal profile, location, core highlights, and professional links.</p>
         </div>
         <span class="card-action">View Profile &rarr;</span>
       </button>
@@ -212,7 +212,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div>
           <div class="card-index">Option 02</div>
           <div class="card-title">Designation</div>
-          <p class="card-preview">Application & Systems Support Engineer | IT & Network Engineer.</p>
+          <p class="card-preview">Application &amp; Systems Support Engineer | IT &amp; Network Engineer.</p>
         </div>
         <span class="card-action">View Role Details &rarr;</span>
       </button>
@@ -224,6 +224,15 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           <p class="card-preview">Current employment status, availability, and collaboration options.</p>
         </div>
         <span class="card-action">Check Availability &rarr;</span>
+      </button>
+
+      <button class="option-card" onclick="selectTab('expertise', this)">
+        <div>
+          <div class="card-index">Option 04</div>
+          <div class="card-title">Expertise &amp; Skills</div>
+          <p class="card-preview">Deep technical stack, cloud &amp; security, data, automation, and modern IT.</p>
+        </div>
+        <span class="card-action">Explore Skills &rarr;</span>
       </button>
     </section>
 
@@ -351,6 +360,64 @@ PORTFOLIO_SECTIONS = {
           <div class="btn-group">
             <button type="button" onclick="openResume()" class="btn btn-primary">View Resume</button>
             <a href="https://www.linkedin.com/in/zeeshan-arif-001058250" target="_blank" rel="noopener" class="btn btn-outline">Message on LinkedIn</a>
+          </div>
+        </div>
+    """,
+    "expertise": """
+        <div class="panel-header">
+          <div>
+            <h2>Technical Expertise &amp; Modern IT Stack</h2>
+            <span style="color: var(--muted); font-size: 0.95rem;">Enterprise Infrastructure, Hybrid Cloud, Automation, Data &amp; Operational Discipline</span>
+          </div>
+          <div class="status-pill"><span class="dot"></span> Multi-Domain IT</div>
+        </div>
+        <div class="panel-body">
+          <p>Comprehensive hands-on capabilities across enterprise networking, hybrid identity and server virtualization, business/logistics applications, data analytics, workflow automation, and site/safety compliance.</p>
+
+          <div class="list-grid">
+            <div class="info-box">
+              <h4>Enterprise Networking &amp; Connectivity</h4>
+              <p>Cisco Catalyst switches (including 9300 series), Cisco routers, VLANs, routing, structured cabling &amp; EMT field rollouts, enterprise Wi-Fi Access Points, VoIP/IP telephony, and broadcast/IP media systems.</p>
+            </div>
+            <div class="info-box">
+              <h4>Hybrid Systems, Identity &amp; Virtualization</h4>
+              <p>Windows Server Hybrid Administration, Active Directory, Group Policy (GPO), Microsoft Entra ID (Azure AD), VMware &amp; Hyper-V virtualization, hyperconverged/storage &amp; backup systems, and endpoint lifecycle management.</p>
+            </div>
+            <div class="info-box">
+              <h4>Cybersecurity, Access &amp; Physical Tech</h4>
+              <p>FortiGate next-gen firewalls, VPNs, PAM/security appliances, endpoint hardening, CCTV/NVR/DVR surveillance, biometric/access control systems, industrial/document scanners, and enterprise MFPs.</p>
+            </div>
+            <div class="info-box">
+              <h4>Enterprise &amp; Logistics Applications</h4>
+              <p>Oracle E-Business Suite (PR/PO workflows), document management platforms, operational scanning &amp; inspection systems, ticketing/CRM workflows, and multi-site operational rollouts &amp; user enablement.</p>
+            </div>
+            <div class="info-box">
+              <h4>Data Analytics, Scripting &amp; Automation</h4>
+              <p>SQL &amp; SQL Server querying/data warehousing, Power BI reporting, Power Automate workflows, Excel analytics, Python scripting, Jupyter/VS Code workflows, and Git version control.</p>
+            </div>
+            <div class="info-box">
+              <h4>Modern IT, AI Productivity &amp; HSE</h4>
+              <p>AI-assisted troubleshooting, documentation &amp; workflow acceleration, root-cause incident/problem management, vendor &amp; stakeholder coordination, and NEBOSH / IOSH workplace safety governance.</p>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">CCNA</span>
+            <span class="tag">Windows Server Hybrid</span>
+            <span class="tag">Entra ID &amp; AD/GPO</span>
+            <span class="tag">Cisco &amp; FortiGate</span>
+            <span class="tag">VMware &amp; Hyper-V</span>
+            <span class="tag">Oracle EBS</span>
+            <span class="tag">SQL &amp; Power BI</span>
+            <span class="tag">Power Automate</span>
+            <span class="tag">Python &amp; Git</span>
+            <span class="tag">AI-Assisted IT Ops</span>
+            <span class="tag">NEBOSH &amp; IOSH</span>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" onclick="openResume()" class="btn btn-primary">View Full Resume</button>
+            <a href="https://github.com/Zeeshan-Arif-Networks" target="_blank" rel="noopener" class="btn btn-outline">Explore GitHub</a>
           </div>
         </div>
     """
